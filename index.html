@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Build and annotate networks in your browser.">
+<title>Constellation · Network Studio</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="d3.min.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<header class="top">
+  <div class="document"><div class="brand"><div class="logo" data-icon="network"></div><span>Constellation</span></div><input id="title" aria-label="Graph title" maxlength="80"></div>
+  <div class="top-actions"><span id="save-state" role="status"></span><button id="import" data-icon="upload">Import</button><button id="export" data-icon="download">Export</button><input type="file" id="file" accept=".json,application/json" hidden></div>
+</header>
+<main>
+  <div class="workspace">
+    <aside class="panel inventory">
+      <div class="panel-head"><div class="head-icon" data-icon="layers"></div><h2>Graph elements</h2></div>
+      <div class="tabs" aria-label="Graph elements"><button id="nodes-tab" aria-pressed="true">Nodes <span id="node-count"></span></button><button id="edges-tab" aria-pressed="false">Edges <span id="edge-count"></span></button></div>
+      <div class="search" data-icon="search"><input id="search" placeholder="Search nodes…" aria-label="Search graph elements"></div>
+      <div id="elements"></div>
+      <div class="inventory-footer"><button id="blank" data-icon="file">New blank graph</button></div>
+    </aside>
+    <section class="panel canvas" aria-label="Graph canvas">
+      <div class="canvas-head">
+        <div class="tool-group" role="group" aria-label="Graph history"><button id="undo" data-icon="undo" aria-label="Undo" title="Undo (Ctrl/⌘+Z)" disabled></button><button id="redo" data-icon="redo" aria-label="Redo" title="Redo (Ctrl/⌘+Shift+Z)" disabled></button></div>
+        <div class="tool-group" role="group" aria-label="Graph tools"><button id="connect" data-icon="link" aria-pressed="false">Connect</button><button class="primary" id="add" data-icon="plus">Add node</button></div>
+      </div>
+      <div id="stage">
+        <svg id="graph" aria-label="Interactive network graph"></svg>
+        <div id="empty" hidden><button id="empty-add" data-icon="plus">Add first node</button></div>
+        <div id="hint" role="status" hidden></div>
+        <div class="canvas-bottom"><div class="zoom"><button id="minus" data-icon="minus" aria-label="Zoom out"></button><output id="zoom-level">100%</output><button id="plus" data-icon="plus" aria-label="Zoom in"></button><button id="fit" data-icon="fit" aria-label="Fit graph"></button></div><span id="summary"></span></div>
+      </div>
+    </section>
+    <aside class="panel inspector" aria-label="Inspector">
+      <div class="panel-head"><div class="head-icon" data-icon="settings"></div><h2>Inspector</h2></div>
+      <div id="properties"></div>
+    </aside>
+  </div>
+</main>
+<div id="context-menu" role="menu" aria-label="Graph actions" hidden></div>
+</body>
+</html>
